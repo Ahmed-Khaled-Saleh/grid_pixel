@@ -20,11 +20,11 @@ import numpy.random as random
 import sys
 from gymnasium.envs.registration import register as gym_register
 
-from .findgoal import FindGoalMultiGrid
-from .redbluedoors import RedBlueDoorsMultiGrid
+from .findgoal import FindGoalMarlGrid
+from .redbluedoors import RedBlueDoorsMarlGrid
 
 from .agents  import GridAgentInterface
-from .base import MultiGridEnv
+from .base import MarlGridEnv
 
 this_module = sys.modules[__name__]
 
@@ -243,10 +243,10 @@ def register_env(
         env_type='c',
 ):
     if env_type == 'c':
-        env_class = FindGoalMultiGrid
+        env_class = FindGoalMarlGrid
         restrict_actions = True
     elif env_type == 'd':
-        env_class = RedBlueDoorsMultiGrid
+        env_class = RedBlueDoorsMarlGrid
         assert n_agents == 2
         assert n_adversaries == 0
         restrict_actions = False
@@ -318,7 +318,7 @@ def register_env(
 # %% ../../nbs/00e_marl_grid.ipynb 10
 def env_from_config(env_config, randomize_seed=True):
     possible_envs = {k: v for k, v in globals().items() if
-                     inspect.isclass(v) and issubclass(v, MultiGridEnv)}
+                     inspect.isclass(v) and issubclass(v, MarlGridEnv)}
 
     env_class = possible_envs[env_config['env_class']]
 

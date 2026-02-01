@@ -150,3 +150,15 @@ checklink/cookies.txt
 
 # Quarto
 .quarto
+
+#imgs
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+
+# 
+*.npy
+*.pkl
+*.npz
